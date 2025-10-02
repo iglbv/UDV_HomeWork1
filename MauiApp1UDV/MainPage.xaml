@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="MauiApp1UDV.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Анкета">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="30,20">
+
+            <Label Text="Анкета" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" />
+
+            <Label Text="Фамилия *" 
+                   FontSize="16" 
+                   FontAttributes="Bold"/>
+            <Entry x:Name="LastNameEntry" 
+                   Placeholder="Введите фамилию"
+                   TextChanged="OnFormDataChanged"/>
+
+            <Label Text="Имя *" 
+                   FontSize="16" 
+                   FontAttributes="Bold"/>
+            <Entry x:Name="FirstNameEntry" 
+                   Placeholder="Введите имя"
+                   TextChanged="OnFormDataChanged"/>
+
+            <Label Text="Отчество" 
+                   FontSize="16" 
+                   FontAttributes="Bold"/>
+            <Entry x:Name="MiddleNameEntry" 
+                   Placeholder="Введите отчество (при наличии)"
+                   TextChanged="OnFormDataChanged"/>
+
+            <Label Text="Возраст: " 
+                   FontSize="16" 
+                   FontAttributes="Bold"/>
+            <Label x:Name="AgeLabel" 
+                   Text="13 лет" 
+                   FontSize="14" 
+                   HorizontalOptions="Center"/>
+
+            <Label  FontSize="14"/>
+            <Slider x:Name="AgeSlider" 
+                    Minimum="13" 
+                    Maximum="100" 
+                    Value="13"
+                    ValueChanged="OnAgeSliderChanged"/>
+
+            <Label FontSize="14"/>
+            <Stepper x:Name="AgeStepper" 
+                     Minimum="13" 
+                     Maximum="100" 
+                     Increment="1" 
+                     Value="13"
+                     ValueChanged="OnAgeStepperChanged"/>
+
+            <Label Text="Номер телефона *" 
+                   FontSize="16" 
+                   FontAttributes="Bold"/>
+            <Entry x:Name="PhoneEntry" 
+                   Placeholder="89991234567" 
+                   Keyboard="Telephone"
+                   TextChanged="OnPhoneTextChanged"/>
+            <Label x:Name="PhoneHintLabel" 
+                   Text="Введите 11 цифр" 
+                   FontSize="12"/>
+
+            <Label Text="Пол *" 
+                   FontSize="16" 
+                   FontAttributes="Bold"/>
+
+            <VerticalStackLayout>
+                <RadioButton x:Name="MaleRadio" 
+                           Content="Мужской" 
+                           GroupName="GenderGroup"
+                           CheckedChanged="OnFormDataChanged"/>
+                <RadioButton x:Name="FemaleRadio" 
+                           Content="Женский" 
+                           GroupName="GenderGroup"
+                           CheckedChanged="OnFormDataChanged"/>
+            </VerticalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Switch x:Name="AgreementSwitch" 
+                        Toggled="OnAgreementToggled"/>
+                <Label Text="Я согласен с условиями обработки персональных данных" 
+                       FontSize="14"
+                       VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnAgreementLabelTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+            <Button x:Name="SubmitButton" 
+                    Text="Отправить" 
+                    Clicked="OnSubmitClicked"
+                    IsEnabled="False"
+                    BackgroundColor="LightGray"
+                    HorizontalOptions="Fill"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
